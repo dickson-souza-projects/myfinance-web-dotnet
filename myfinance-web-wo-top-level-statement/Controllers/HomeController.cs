@@ -1,5 +1,8 @@
 using System.Diagnostics;
+
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+
 using myfinance_web.Models;
 
 namespace myfinance_web.Controllers;
@@ -15,17 +18,26 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        var resultView = View();
+        return resultView;
     }
 
     public IActionResult Privacy()
     {
-        return View();
+        var resultView = View();
+        return resultView;
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        var resultView = View(
+            new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            }
+        );
+
+        return resultView;
     }
 }
