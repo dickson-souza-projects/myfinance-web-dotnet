@@ -1,8 +1,11 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Linq;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
+using myfinance.web.Infrastructure;
 using myfinance.web.Models;
 
 namespace myfinance.web.Controllers;
@@ -10,14 +13,22 @@ namespace myfinance.web.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> logger;
+    private MyFinanceDbContext myFinanceDbContext;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(
+        ILogger<HomeController> logger,
+        MyFinanceDbContext myFinanceDbContext
+    )
     {
         this.logger = logger;
+        this.myFinanceDbContext = myFinanceDbContext;
     }
 
     public IActionResult Index()
     {
+        var firstRecordForTesting = myFinanceDbContext.PlanoConta.FirstOrDefault();
+        ViewBag.Teste = firstRecordForTesting.Nome;
+
         var resultView = View();
         return resultView;
     }
