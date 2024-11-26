@@ -26,13 +26,6 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        var firstRecordForTesting = myFinanceDbContext.PlanoConta.FirstOrDefault();
-
-        if (firstRecordForTesting != null)
-        {
-            ViewBag.Teste = firstRecordForTesting.Nome;
-        }
-
         var resultView = View();
         return resultView;
     }
