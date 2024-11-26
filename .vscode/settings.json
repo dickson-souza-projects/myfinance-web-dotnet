@@ -1,3 +1,12 @@
 {
-    "files.trimTrailingWhitespace": true
+    "files.trimTrailingWhitespace": true,
+    "files.exclude": {
+        "**/bin": true,
+        "**/obj": true,
+        "**/.git": true,
+        "**/.git-hooks-for-reuse": false,
+        "**/.vs": true,
+        "**/.vscode": false,
+        "**/.config": false
+    }
 }

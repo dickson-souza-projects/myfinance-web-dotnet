@@ -1,23 +1,38 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Linq;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-using myfinance_web.Models;
+using myfinance.web.Infrastructure;
+using myfinance.web.Models;
 
-namespace myfinance_web.Controllers;
+namespace myfinance.web.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<HomeController> logger;
+    private MyFinanceDbContext myFinanceDbContext;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(
+        ILogger<HomeController> logger,
+        MyFinanceDbContext myFinanceDbContext
+    )
     {
-        _logger = logger;
+        this.logger = logger;
+        this.myFinanceDbContext = myFinanceDbContext;
     }
 
     public IActionResult Index()
     {
+        var firstRecordForTesting = myFinanceDbContext.PlanoConta.FirstOrDefault();
+
+        if (firstRecordForTesting != null)
+        {
+            ViewBag.Teste = firstRecordForTesting.Nome;
+        }
+
         var resultView = View();
         return resultView;
     }
