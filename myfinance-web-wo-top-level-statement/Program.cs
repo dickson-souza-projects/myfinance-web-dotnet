@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace myfinance_web;
+namespace myfinance.web;
 
 public static class Program
 {
