@@ -1,6 +1,8 @@
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+using myfinance.web.Infrastructure;
 
 namespace myfinance.web;
 
@@ -12,6 +14,7 @@ public static class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        builder.Services.AddDbContext<MyFinanceDbContext>();
 
         var app = builder.Build();
 
