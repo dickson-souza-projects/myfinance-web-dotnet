@@ -8,12 +8,9 @@ on:
     branches:
       - main
 
-  pull_request_target:
-    types:
-      - opened
-    branches:
-      - main
-    
+  pull_request:
+    types: [opened, synchronize, reopened]
+
   workflow_dispatch:
 
 jobs:
@@ -57,7 +54,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: .net-app
-      
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
@@ -72,4 +69,3 @@ jobs:
           app-name: 'my-finance-web-app-mvc'
           slot-name: 'Production'
           package: .
-          
