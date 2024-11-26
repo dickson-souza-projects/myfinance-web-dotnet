@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 using myfinance.web.Domain;
 
@@ -14,6 +14,5 @@ public class MyFinanceDbContext : DbContext
     {
         var connectionString = "";
         optionsBuilder.UseSqlServer(connectionString);
-
     }
 }
