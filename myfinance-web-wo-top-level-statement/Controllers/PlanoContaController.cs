@@ -19,4 +19,11 @@ public class PlanoContaController : Controller
         ViewBag.List = planoContaService.ListarRegistros();
         return resultView;
     }
+
+    public IActionResult Cadastro() 
+    {
+        var resultView = View();
+        return resultView;
+    }
+
 }

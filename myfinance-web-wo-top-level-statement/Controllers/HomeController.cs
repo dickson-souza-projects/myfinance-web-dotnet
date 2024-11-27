@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics;
-using System.Linq;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 using myfinance.web.Infrastructure;
