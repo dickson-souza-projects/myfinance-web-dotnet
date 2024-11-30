@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
+using myfinance.web.Domain;
+using myfinance.web.Models;
 using myfinance.web.Services;
 
 namespace myfinance.web.Controllers;
@@ -20,10 +22,16 @@ public class PlanoContaController : Controller
         return resultView;
     }
 
-    public IActionResult Cadastro() 
+    [HttpGet]
+    [HttpPost]
+    public IActionResult Cadastro(PlanoContaModel? model)
     {
+        if (model != null && ModelState.IsValid)
+        {
+            planoContaService.Salvar(model);
+        }
+
         var resultView = View();
         return resultView;
     }
-
 }

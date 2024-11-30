@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using myfinance.web.Controllers;
 using myfinance.web.Domain;
 using myfinance.web.Infrastructure;
+using myfinance.web.Models;
 
 namespace myfinance.web.Services;
 
@@ -38,8 +39,33 @@ public class PlanoContaService : IPlanoContaService
         throw new NotImplementedException();
     }
 
-    public void Salvar(PlanoConta item)
+    public void Salvar(PlanoContaModel requestItem)
     {
-        throw new NotImplementedException();
+        if (requestItem == null)
+        {
+            return;
+        }
+
+        var dbSet = myFinanceDbContext.PlanoConta;
+
+        var item = new PlanoConta()
+        {
+            Nome = requestItem.Nome,
+            Tipo = requestItem.Tipo
+        };
+
+        if(requestItem.Id == null)
+        {
+            dbSet.Add(item);
+        }
+        else
+        {
+            item.Id = (int)requestItem.Id;
+
+            dbSet.Attach(item);
+            myFinanceDbContext.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+        }
+
+        myFinanceDbContext.SaveChanges();
     }
 }
