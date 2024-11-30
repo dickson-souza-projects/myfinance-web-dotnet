@@ -26,7 +26,7 @@ public class PlanoContaController : Controller
     [HttpPost]
     public IActionResult Cadastro(PlanoContaModel? model)
     {
-        if (model != null && ModelState.IsValid)
+        if (model != null && ModelState.IsValid && this.Request.Method == "POST")
         {
             planoContaService.Salvar(model);
         }
