@@ -13,7 +13,7 @@ namespace myfinance.web.Services;
 
 public class PlanoContaService : IPlanoContaService
 {
-    private MyFinanceDbContext myFinanceDbContext;
+    private readonly MyFinanceDbContext myFinanceDbContext;
 
     public PlanoContaService(
         ILogger<HomeController> logger,
