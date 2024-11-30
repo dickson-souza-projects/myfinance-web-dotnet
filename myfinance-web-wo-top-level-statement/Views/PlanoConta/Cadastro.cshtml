@@ -1,0 +1,35 @@
+﻿@model PlanoContaModel
+
+@{
+    ViewData["Title"] = "Cadastro de Plano de Contas";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="PlanoConta" asp-action="Cadastro" method="post">
+    <div class="container">
+        <div class="mb-3">
+            <input type="hidden" id="txtId" class="form-control" asp-for="Id" />
+            <label class="form-label" for="txtId">
+                Nome
+            </label>
+            <input type="text" id="txtNome" class="form-control" asp-for="Nome" />
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Tipo">@Html.RadioButtonFor(m => m.Tipo, "D")Despesa</label>
+            <label asp-for="Tipo">@Html.RadioButtonFor(m => m.Tipo, "R")Receita</label>
+            <span asp-validation-for="Tipo" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary btn-lg">Salvar</button>
+            <button type="button" class="btn btn-secondary btn-lg" onclick="Voltar()">Cancelar</button>
+        </div>
+</form>
+
+<script type="text/javascript">
+    function Voltar() {
+        window.location.href = "../PlanoConta/Index";
+    }
+</script>

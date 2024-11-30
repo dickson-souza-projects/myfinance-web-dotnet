@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using myfinance.web.Infrastructure;
+using myfinance.web.Services;
 
 namespace myfinance.web;
 
@@ -15,6 +16,7 @@ public static class Program
         // Add services to the container.
         builder.Services.AddControllersWithViews();
         builder.Services.AddDbContext<MyFinanceDbContext>();
+        builder.Services.AddScoped<IPlanoContaService, PlanoContaService>();
 
         var app = builder.Build();
 
