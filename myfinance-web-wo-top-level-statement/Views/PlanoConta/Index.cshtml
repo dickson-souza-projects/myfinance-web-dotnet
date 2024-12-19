@@ -34,10 +34,10 @@
                 <td>@item.Nome</td>
                 <td>@item.Tipo</td>
                 <td>
-                    <button type="button" class="btn btn-warning">Editar</button>
+                    <button type="button" class="btn btn-warning" onclick="Editar()">Editar</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger">Excluir</button>
+                    <button type="button" class="btn btn-danger" onclick="Excluir()">Excluir</button>
                 </td>
             </tr>
         }
@@ -45,3 +45,13 @@
 
 
 </table>
+
+<script>
+    function Editar() {
+        alert("Aqui estará a lógica do botão Editar")
+    }
+
+    function Excluir() {
+        alert("Aqui estará a lógica do botão Excluir")
+    }
+</script>
