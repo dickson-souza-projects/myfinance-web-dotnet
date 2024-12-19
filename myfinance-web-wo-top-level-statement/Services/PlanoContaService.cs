@@ -41,20 +41,24 @@ public class PlanoContaService : IPlanoContaService
 
     public void Salvar(PlanoContaModel requestItem)
     {
-        if (requestItem == null)
+        PlanoConta? item;
+        if (requestItem.IsValid())
+        {
+            item = requestItem.ConvertToPlanoConta();
+        }
+        else
+        {
+            return;
+        }
+
+        if (item == null)
         {
             return;
         }
 
         var dbSet = myFinanceDbContext.PlanoConta;
 
-        var item = new PlanoConta()
-        {
-            Nome = requestItem.Nome,
-            Tipo = requestItem.Tipo
-        };
-
-        if(requestItem.Id == null)
+        if (requestItem.Id == null)
         {
             dbSet.Add(item);
         }
