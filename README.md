@@ -15,9 +15,19 @@ O modelo arquitetural resumido é apresentado na imagem abaixo e a implementaç�
 ![Modelagem Arquitetural por Filipe Tório](./docs/MyFinanceWeb-ModelagemArquitetural.png)
 *Figura 1: Modelagem Arquitetural elaborada pelo Professor Filipe Tório*
 
-## 2.2 Como executar a aplicação em ambiente local
+## 2.2 Protótipo de telas
 
-### 2.2.1 Pré-requisitos
+Dois protótipos simplificados da tela para exibição, edição, inserção e edição das transações e dos planos de contas são apresentados abaixo. Como são protótipos de baixa fidelidade, as telas criadas no projeto não correspondem detalhadamente à essas representações.
+
+![Exemplo de tela para o Plano de Contas](./docs/Plano%20de%20Contas.png)
+*Figura 2: Exemplo de tela para o Plano de Contas elaborada pelo Professor Filipe Tório*
+
+![Exemplo de tela para as Transações](./docs/Transações.png)
+*Figura 3: Exemplo de tela para as Transações elaborada pelo Professor Filipe Tório*
+
+## 2.3 Como executar a aplicação em ambiente local
+
+### 2.3.1 Pré-requisitos
 Para executar essa aplicação são necessários os seguintes requisitos:
 - Ter o SDK do .NET instalado em versões iguais ou superiores ao **.NET 8**
   - Para essa versão, consulte o link [Download .NET 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0));
@@ -37,25 +47,25 @@ git clone https://github.com/dickson-souza-projects/myfinance-web-dotnet.git
 cd myfinance-web-dotnet
 ```
 
-### 2.2.2 Criando o banco de dados
+### 2.3.2 Criando o banco de dados
 
 A criação do banco de dados é feita através do script [DB-Creation-And-Configuration.sql](./Scripts/DB-Creation-and-Configuration.sql): por meio dele é criado o banco de dados **MyFinance** contendo duas tabelas: **PlanoConta** e **Transacao**.
 
 A tabela **PlanoConta** descreve os tipos de transação existente, tais como despesas com combustível, água, luz e recebíveis como salários, aluguéis e dividendos.
 
 ![Exemplo de Tabela de Plano de Contas](./docs/Exemplo_Tabela_Plano_Contas.png)
-*Figura 2: Exemplo de Tabela de Plano de Contas (extraído do documento [ConcepçãoMyFinanceWeb.pdf](./docs/ConcepçãoMyFinanceWeb.pdf), elaborado pelo professor Filipe Tório)*
+*Figura 4: Exemplo de Tabela de Plano de Contas (extraído do documento [ConcepçãoMyFinanceWeb.pdf](./docs/ConcepçãoMyFinanceWeb.pdf), elaborado pelo professor Filipe Tório)*
 
 Já a tabela **Transacao** contém registros de transações individuais, categorizadas pelo **PlanoConta** correspondente.
 
 ![Exemplo de Tabela de Transações](./docs/Exemplo_Tabela_Transacao.png)
-*Figura 3: Exemplo de Tabela de Transações (extraído do documento [ConcepçãoMyFinanceWeb.pdf](./docs/ConcepçãoMyFinanceWeb.pdf), elaborado pelo professor Filipe Tório)*
+*Figura 5: Exemplo de Tabela de Transações (extraído do documento [ConcepçãoMyFinanceWeb.pdf](./docs/ConcepçãoMyFinanceWeb.pdf), elaborado pelo professor Filipe Tório)*
 
-#### 2.2.2.1 Alimentação do banco de dados
+#### 2.3.2.1 Alimentação do banco de dados
 
 Para facilitar o onboarding no projeto, um pequeno script foi criado para inserir alguns dados nas duas tabelas. Esse script pode ser encontrado no arquivo [Feeding-Database.sql](./Scripts/Feeding-Database.sql). E um outro script está disponível com algumas consultas simples no arquivo [Queries.sql](./Scripts/Queries.sql).
 
-### 2.2.3 Execução
+### 2.3.3 Execução
 
 Para executar o projeto sem depuração, abra a solução [myfinance-web.sln](myfinance-web.sln) no Visual Studio Community 2022 e pressione `CTRL + F5`. Já para executar usando os recursos embutidos de depuração no Visual Studio Community 2022, pressione apenas `F5` - lembre-se de definir alguns pontos de interrupção para monitorar seções específicas do código.
 
