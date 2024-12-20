@@ -6,6 +6,15 @@ Repositório com o conteúdo do trabalho prático da disciplina **Práticas de I
 
 Esse projeto didático teve o intuito de criar uma pequena aplicação financeira para uso pessoal. A aplicação foi criada em ASP.NET MVC (Model-View-Controller) com Razor pages e persistência de dados em Microsoft SQL Server 2022, Developer Edition. O mapeamento dos dados foi feito usando Entity Framework Core 9.
 
+A proposta do projeto está disponível no arquivo [ConcepçãoMyFinanceWeb.pdf](./docs/ConcepçãoMyFinanceWeb.pdf)
+
+## Modelo arquitetural resumido
+
+O modelo arquitetural resumido é apresentado na imagem abaixo e a implementação contida nesse projeto satisfaz parcialmente esse desenho. Algumas mudanças são a atualização da versão do SDK do .NET e uma simplificação com respeito às camadas do projeto. O projeto presente contém todas as camadas em um único arquivo .csproj por questões de tempo reduzido para uma implementação mais detalhada.
+
+![Modelagem Arquitetural por Filipe Tório](./docs/MyFinanceWeb-ModelagemArquitetural.png)
+*Figura 1: Modelagem Arquitetural elaborada pelo Professor Filipe Tório*
+
 ## Como executar a aplicação em ambiente local
 
 ### Pré-requisitos
@@ -27,4 +36,18 @@ git clone https://github.com/dickson-souza-projects/myfinance-web-dotnet.git
 # Acessar o conteúdo do repositório
 cd myfinance-web-dotnet
 ```
+
+### Criando o banco de dados
+
+A criação do banco de dados é feita através do script [DB-Creation-And-Configuration.sql](./Scripts/DB-Creation-and-Configuration.sql): por meio dele é criado o banco de dados **MyFinance** contendo duas tabelas: **PlanoConta** e **Transacao**.
+
+A tabela **PlanoConta** descreve os tipos de transação existente, tais como despesas com combustível, água, luz e recebíveis como salários, aluguéis e dividendos.
+
+![Exemplo de Tabela de Plano de Contas](./docs/Exemplo_Tabela_Plano_Contas.png)
+*Figura 2: Exemplo de Tabela de Plano de Contas (extraído do documento [ConcepçãoMyFinanceWeb.pdf](./docs/ConcepçãoMyFinanceWeb.pdf), elaborado pelo professor Filipe Tório)*
+
+Já a tabela **Transacao** contém registros de transações individuais, categorizadas pelo **PlanoConta** correspondente.
+
+![Exemplo de Tabela de Transações](./docs/Exemplo_Tabela_Transacao.png)
+*Figura 3: Exemplo de Tabela de Transações (extraído do documento [ConcepçãoMyFinanceWeb.pdf](./docs/ConcepçãoMyFinanceWeb.pdf), elaborado pelo professor Filipe Tório)*
 
