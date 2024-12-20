@@ -34,7 +34,7 @@
                 <td>@item.Nome</td>
                 <td>@item.Tipo</td>
                 <td>
-                    <button type="button" class="btn btn-warning" onclick="Editar()">Editar</button>
+                    <button type="button" class="btn btn-warning" onclick="Editar(@item.Id)">Editar</button>
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger" onclick="Excluir()">Excluir</button>
@@ -47,8 +47,8 @@
 </table>
 
 <script>
-    function Editar() {
-        alert("Aqui estará a lógica do botão Editar")
+    function Editar(id) {
+        window.location.href = "../PlanoConta/Cadastro/" + id;
     }
 
     function Excluir() {
