@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 using myfinance.web.Domain;
 using myfinance.web.Models;
@@ -34,4 +34,20 @@ public class PlanoContaController : Controller
         var resultView = View();
         return resultView;
     }
+
+    [HttpGet]
+    [HttpPost]
+    [Route("Cadastro/{id}")]
+    public IActionResult Cadastro(int id)
+    {
+        var planoContaModel = new PlanoContaModel()
+        {
+            Id = id,
+            Nome = "Teste",
+            Tipo = "R"
+        };
+
+        return View(planoContaModel);
+    }
+
 }
