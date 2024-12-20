@@ -28,11 +28,17 @@ public class PlanoContaController : Controller
     {
         if (model != null && ModelState.IsValid && this.Request.Method == "POST")
         {
-            planoContaService.Salvar(model);
-        }
+            var newItemId = planoContaService.Salvar(model);
 
+            var planoContaModel = planoContaService.RetornarRegistro(newItemId);
+            return View(planoContaModel);
+        }
+        else
+        {
         var resultView = View();
         return resultView;
+        }
+
     }
 
     [HttpGet]

@@ -54,7 +54,7 @@ public class PlanoContaService : IPlanoContaService
         }
     }
 
-    public void Salvar(PlanoContaModel requestItem)
+    public int Salvar(PlanoContaModel requestItem)
     {
         PlanoConta? item;
         if (requestItem.IsValid())
@@ -63,12 +63,12 @@ public class PlanoContaService : IPlanoContaService
         }
         else
         {
-            return;
+            return -1;
         }
 
         if (item == null)
         {
-            return;
+            return -1;
         }
 
         var dbSet = myFinanceDbContext.PlanoConta;
@@ -86,5 +86,8 @@ public class PlanoContaService : IPlanoContaService
         }
 
         myFinanceDbContext.SaveChanges();
+
+        return item.Id;
+
     }
 }
