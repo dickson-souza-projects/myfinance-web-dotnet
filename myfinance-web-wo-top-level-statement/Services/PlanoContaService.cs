@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 using myfinance.web.Controllers;
@@ -25,7 +26,22 @@ public class PlanoContaService : IPlanoContaService
 
     public void Excluir(int id)
     {
-        throw new NotImplementedException();
+        var planoContaModelItem = RetornarRegistro(id);
+        var planoContaItem = planoContaModelItem.ConvertToPlanoConta();
+
+        try
+        {
+            if (planoContaItem != null)
+            {
+                myFinanceDbContext.Remove(planoContaItem);
+                myFinanceDbContext.SaveChanges();
+            }
+        }
+        catch
+        {
+            var errorMessage = "Esse item não pode ser deletado pois há transações vinculadas a ele.";
+            throw new InvalidOperationException(errorMessage);
+        }
     }
 
     public List<PlanoConta> ListarRegistros()
@@ -36,7 +52,7 @@ public class PlanoContaService : IPlanoContaService
 
     public PlanoContaModel RetornarRegistro(int id)
     {
-        var registro = myFinanceDbContext.PlanoConta.Where(x => x.Id == id).FirstOrDefault();
+        var registro = myFinanceDbContext.PlanoConta.Where(x => x.Id == id).AsNoTracking().FirstOrDefault();
         PlanoContaModel? planoContaModel = null;
 
         if (registro != null)
@@ -88,6 +104,5 @@ public class PlanoContaService : IPlanoContaService
         myFinanceDbContext.SaveChanges();
 
         return item.Id;
-
     }
 }

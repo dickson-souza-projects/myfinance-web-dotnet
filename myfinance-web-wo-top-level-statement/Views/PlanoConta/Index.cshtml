@@ -6,11 +6,11 @@
 
 <h1>Plano de contas</h1>
 
-<a 
-    type="button" 
+<a
+    type="button"
     class="btn btn-primary"
     asp-area=""
-    asp-controller="PlanoConta" 
+    asp-controller="PlanoConta"
     asp-action="Cadastro"
 >
     Criar item de Plano de Conta
@@ -37,7 +37,7 @@
                     <button type="button" class="btn btn-warning" onclick="Editar(@item.Id)">Editar</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger" onclick="Excluir()">Excluir</button>
+                    <button type="button" class="btn btn-danger" onclick="Excluir(@item.Id)">Excluir</button>
                 </td>
             </tr>
         }
@@ -51,7 +51,7 @@
         window.location.href = "../PlanoConta/Cadastro/" + id;
     }
 
-    function Excluir() {
-        alert("Aqui estará a lógica do botão Excluir")
+    function Excluir(id) {
+        window.location.href = "../PlanoConta/Excluir/" + id;
     }
 </script>

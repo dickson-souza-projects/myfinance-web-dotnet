@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 
-using myfinance.web.Domain;
 using myfinance.web.Models;
 using myfinance.web.Services;
 
@@ -57,4 +56,18 @@ public class PlanoContaController : Controller
         return View(planoContaModel);
     }
 
+    [HttpGet]
+    [Route("Excluir/{id}")]
+    public IActionResult Excluir(int id)
+    {
+        try
+        {
+            planoContaService.Excluir(id);
+        }
+        catch
+        {
+            // Do nothing
+        }
+        return RedirectToAction("Index");
+    }
 }
