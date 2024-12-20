@@ -65,7 +65,10 @@ public class PlanoContaController : Controller
     {
         try
         {
-            planoContaService.Excluir(id);
+            if (ModelState.IsValid)
+            {
+                planoContaService.Excluir(id);
+            }
         }
         catch
         {
