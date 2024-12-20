@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "dotnet",
+			"task": "build",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "build myfinance-web-dotnet"
+		},
+		{
+			"label": "dotnet run myfinance-web",
+			"type": "shell",
+			"command": "dotnet run",
+			"problemMatcher": []
+		},
+		{
+			"type": "dotnet",
+			"task": "watch myfinance-web",
+			"file": "${workspaceFolder}\\myfinance-web.csproj",
+			"problemMatcher": [],
+			"label": "watch myfinance-web-dotnet"
+		}
+	]
+}
