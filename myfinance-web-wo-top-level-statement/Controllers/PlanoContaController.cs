@@ -44,8 +44,16 @@ public class PlanoContaController : Controller
     [HttpGet]
     [HttpPost]
     [Route("Cadastro/{id}")]
-    public IActionResult Cadastro(int id)
+    public IActionResult Cadastro(int id, PlanoContaModel? model)
     {
+        if (model != null && ModelState.IsValid && this.Request.Method == "POST")
+    {
+            var savedId = planoContaService.Salvar(model);
+
+            var savedPlanoContaModel = planoContaService.RetornarRegistro(savedId);
+            return View(savedPlanoContaModel);
+        }
+
         var planoContaModel = planoContaService.RetornarRegistro(id);
 
         return View(planoContaModel);
