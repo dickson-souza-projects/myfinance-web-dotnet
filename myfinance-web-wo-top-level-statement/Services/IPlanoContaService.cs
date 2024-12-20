@@ -9,9 +9,9 @@ public interface IPlanoContaService
 {
     List<PlanoConta> ListarRegistros();
 
-    void Salvar(PlanoContaModel requestItem);
+    int Salvar(PlanoContaModel requestItem);
 
     void Excluir(int id);
 
-    PlanoConta RetornarRegistro(int id);
+    PlanoContaModel RetornarRegistro(int id);
 }

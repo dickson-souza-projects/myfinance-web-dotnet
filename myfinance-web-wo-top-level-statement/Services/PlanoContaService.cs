@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 using myfinance.web.Controllers;
@@ -25,7 +26,22 @@ public class PlanoContaService : IPlanoContaService
 
     public void Excluir(int id)
     {
-        throw new NotImplementedException();
+        var planoContaModelItem = RetornarRegistro(id);
+        var planoContaItem = planoContaModelItem.ConvertToPlanoConta();
+
+        try
+        {
+            if (planoContaItem != null)
+            {
+                myFinanceDbContext.Remove(planoContaItem);
+                myFinanceDbContext.SaveChanges();
+            }
+        }
+        catch
+        {
+            var errorMessage = "Esse item não pode ser deletado pois há transações vinculadas a ele.";
+            throw new InvalidOperationException(errorMessage);
+        }
     }
 
     public List<PlanoConta> ListarRegistros()
@@ -34,12 +50,27 @@ public class PlanoContaService : IPlanoContaService
         return list;
     }
 
-    public PlanoConta RetornarRegistro(int id)
+    public PlanoContaModel RetornarRegistro(int id)
     {
-        throw new NotImplementedException();
+        var registro = myFinanceDbContext.PlanoConta.Where(x => x.Id == id).AsNoTracking().FirstOrDefault();
+        PlanoContaModel? planoContaModel = null;
+
+        if (registro != null)
+        {
+            planoContaModel = registro.ConvertToPlanoContaModel();
+        }
+
+        if (planoContaModel != null)
+        {
+            return planoContaModel;
+        }
+        else
+        {
+            throw new ArgumentOutOfRangeException($"Registro cujo id = {id} não foi encontrado!");
+        }
     }
 
-    public void Salvar(PlanoContaModel requestItem)
+    public int Salvar(PlanoContaModel requestItem)
     {
         PlanoConta? item;
         if (requestItem.IsValid())
@@ -48,12 +79,12 @@ public class PlanoContaService : IPlanoContaService
         }
         else
         {
-            return;
+            return -1;
         }
 
         if (item == null)
         {
-            return;
+            return -1;
         }
 
         var dbSet = myFinanceDbContext.PlanoConta;
@@ -71,5 +102,7 @@ public class PlanoContaService : IPlanoContaService
         }
 
         myFinanceDbContext.SaveChanges();
+
+        return item.Id;
     }
 }

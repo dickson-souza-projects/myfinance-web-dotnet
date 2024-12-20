@@ -37,6 +37,28 @@ public static class PlanoContaModelExtensions
             Tipo = model.Tipo
         };
 
+        if (model.Id != null)
+        {
+            item.Id = (int)model.Id;
+        }
+
+        return item;
+    }
+
+    public static PlanoContaModel? ConvertToPlanoContaModel(this PlanoConta planoConta)
+    {
+        if (planoConta == null)
+        {
+            return null;
+        }
+
+        var item = new PlanoContaModel()
+        {
+            Id = planoConta.Id,
+            Nome = planoConta.Nome,
+            Tipo = planoConta.Tipo
+        };
+
         return item;
     }
 }

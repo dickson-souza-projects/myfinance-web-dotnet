@@ -30,6 +30,11 @@
 
 <script type="text/javascript">
     function Voltar() {
-        window.location.href = "../PlanoConta/Index";
+        if (window.location.href.includes("Cadastro/")){
+            window.location.href = "../../PlanoConta/Index";
+        }
+        else {
+            window.location.href = "../PlanoConta/Index";
+        }
     }
 </script>
