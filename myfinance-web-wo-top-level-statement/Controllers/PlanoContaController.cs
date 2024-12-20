@@ -40,12 +40,7 @@ public class PlanoContaController : Controller
     [Route("Cadastro/{id}")]
     public IActionResult Cadastro(int id)
     {
-        var planoContaModel = new PlanoContaModel()
-        {
-            Id = id,
-            Nome = "Teste",
-            Tipo = "R"
-        };
+        var planoContaModel = planoContaService.RetornarRegistro(id);
 
         return View(planoContaModel);
     }

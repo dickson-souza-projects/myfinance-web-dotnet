@@ -34,9 +34,24 @@ public class PlanoContaService : IPlanoContaService
         return list;
     }
 
-    public PlanoConta RetornarRegistro(int id)
+    public PlanoContaModel RetornarRegistro(int id)
     {
-        throw new NotImplementedException();
+        var registro = myFinanceDbContext.PlanoConta.Where(x => x.Id == id).FirstOrDefault();
+        PlanoContaModel? planoContaModel = null;
+
+        if (registro != null)
+        {
+            planoContaModel = registro.ConvertToPlanoContaModel();
+        }
+
+        if (planoContaModel != null)
+        {
+            return planoContaModel;
+        }
+        else
+        {
+            throw new ArgumentOutOfRangeException($"Registro cujo id = {id} não foi encontrado!");
+        }
     }
 
     public void Salvar(PlanoContaModel requestItem)

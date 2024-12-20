@@ -13,5 +13,5 @@ public interface IPlanoContaService
 
     void Excluir(int id);
 
-    PlanoConta RetornarRegistro(int id);
+    PlanoContaModel RetornarRegistro(int id);
 }
