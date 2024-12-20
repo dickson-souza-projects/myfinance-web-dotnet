@@ -54,3 +54,10 @@ Já a tabela **Transacao** contém registros de transações individuais, catego
 #### 2.2.2.1 Alimentação do banco de dados
 
 Para facilitar o onboarding no projeto, um pequeno script foi criado para inserir alguns dados nas duas tabelas. Esse script pode ser encontrado no arquivo [Feeding-Database.sql](./Scripts/Feeding-Database.sql). E um outro script está disponível com algumas consultas simples no arquivo [Queries.sql](./Scripts/Queries.sql).
+
+### 2.2.3 Execução
+
+Para executar o projeto sem depuração, abra a solução [myfinance-web.sln](myfinance-web.sln) no Visual Studio Community 2022 e pressione `CTRL + F5`. Já para executar usando os recursos embutidos de depuração no Visual Studio Community 2022, pressione apenas `F5` - lembre-se de definir alguns pontos de interrupção para monitorar seções específicas do código.
+
+
+
