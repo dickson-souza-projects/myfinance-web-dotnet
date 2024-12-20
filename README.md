@@ -73,3 +73,22 @@ Para facilitar o onboarding no projeto, um pequeno script foi criado para inseri
 ### 2.3.3 Execução
 
 Para executar o projeto sem depuração, abra a solução [myfinance-web.sln](myfinance-web.sln) no Visual Studio Community 2022 e pressione `CTRL + F5`. Já para executar usando os recursos embutidos de depuração no Visual Studio Community 2022, pressione apenas `F5` - lembre-se de definir alguns pontos de interrupção para monitorar seções específicas do código.
+
+Caso você use o Visual Studio Code e prefira uma interface de linha de comando, a execução do projeto sem depuração necessita do seguinte comando na raiz do repositório:
+```bash
+dotnet run
+```
+
+Para interromper a execução, basta pressionar `CTRL + C` no terminal. A figura abaixo mostra um exemplo da saída exibida na tela ao final da compilação e dos avisos emitidos.
+
+![Exemplo de execução do comando dotnet run](./docs/dotnet_run_exemplo.png)
+
+*Figura 6: Exemplo de execução do comando dotnet run*
+
+Já para depurar o código, basta pressionar `F5` (certifique-se antes que a configuração `Debug myfinance-web` está selecionada no painel de Run and Debug do VS Code). Lembre-se ainda de definir alguns pontos de interrupção para inspeção do código.
+
+Um exemplo de depuração no VS Code é mostrado na Figura 7, abaixo:
+
+![Exemplo de depuração no VS Code](./docs/Exemplo-VSCode-debugging.png)
+
+*Figura 7: Exemplo de depuração no VS Code*
